@@ -1,4 +1,4 @@
-## Team Members
+## Team Members:
 Aanchal Tiwari
 Alper Erel
 Michael Homer
