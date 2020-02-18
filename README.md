@@ -1,2 +1,7 @@
-# semester-project-group-5
-# semester-project-group-5
+## Team Members
+Aanchal Tiwari
+Alper Erel
+Michael Homer
+Nikoloz Dzidzava
+Od Purevsuren
+
