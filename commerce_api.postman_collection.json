@@ -22,7 +22,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"email\": \"example.com\",\n\t\"last_name\": \"Smith\",\n\t\"username\": \"DopeUser\"\n}",
+							"raw": "{\n\t\"email\": \"example.com\",\n\t\"first_name\": \"Dan\",\n\t\"last_name\": \"Smith\",\n\t\"username\": \"DopeUser\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
