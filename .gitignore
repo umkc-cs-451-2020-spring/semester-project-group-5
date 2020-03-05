@@ -6,18 +6,18 @@
 
 .DS_STORE
 # Ignore bundler config.
-/.bundle
+/commerce_bank_api/.bundle
 
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
+/commerce_bank_api/log/*
+/commerce_bank_api/tmp/*
+!/commerce_bank_api/log/.keep
+!/commerce_bank_api/tmp/.keep
 
 # Ignore uploaded files in development.
-/storage/*
-!/storage/.keep
-.byebug_history
+/commerce_bank_api/storage/*
+!/commerce_bank_api/storage/.keep
+/commerce_bank_api/.byebug_history
 
 # Ignore master key for decrypting credentials and more.
-/config/master.key
+/commerce_bank_api/config/master.key
