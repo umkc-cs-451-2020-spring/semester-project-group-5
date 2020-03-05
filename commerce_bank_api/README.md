@@ -1,24 +1,56 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Resource Endpoints
+### Users
+**POST /api/users**  
+Example Request:
+```json
+{
+  "email": "example.com",
+  "first_name": "Dan",
+  "last_name": "Smith",
+  "username": "DopeUser"
+}
+```
+Response: 201  
+```json
+{
+    "id": 2,
+    "email": "example.com",
+    "first_name": "Dan",
+    "last_name": "Smith",
+    "username": "DopeUser",
+    "created_at": "2020-03-05T02:53:41.771Z",
+    "updated_at": "2020-03-05T02:53:41.771Z"
+}
+```
 
-Things you may want to cover:
+**GET /api/users/:id**  
+Example Response: 200  
+```json
+{
+    "id": 2,
+    "email": "example.com",
+    "first_name": "Dan",
+    "last_name": "Smith",
+    "username": "DopeUser",
+    "created_at": "2020-03-05T02:53:41.771Z",
+    "updated_at": "2020-03-05T02:53:41.771Z"
+}
+```
 
-* Ruby version
+**PUT /api/users/:id**  
+Example Request: _Note: Since this is a PUT request, the entire object should be given, not just parts_
+```json
+{
+	"email": "changed@example.com",
+	"first_name": "Dan",
+	"last_name": "Smith",
+	"username": "DopeUser"
+}
+```
+Response: 204  
 
-* System dependencies
+**DELETE /api/users/:id**  
+Successful Response: 204
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
