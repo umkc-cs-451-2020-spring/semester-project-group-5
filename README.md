@@ -33,6 +33,6 @@ To start the API server:
 bundle exec rails s
 ```
 ## Tools
-It is recommended that you interface with the API via a program called postman. Use the postman collection in this so that you don't have to set it all up yourself. Use the reference [here](https://github.com/umkc-cs-451-2020-spring/semester-project-group-5/blob/master/commerce_bank_api/README.md#resource-endpoints) to understand the API endpoints.
+It is recommended that you interface with the API via a program called [postman](https://www.postman.com/). Use the postman collection in this repo (commerce_api.postman_collection.json) so that you don't have to set it all up yourself. Use the reference [here](https://github.com/umkc-cs-451-2020-spring/semester-project-group-5/blob/master/commerce_bank_api/README.md#resource-endpoints) to understand the API endpoints.
 
 
