@@ -13,9 +13,14 @@ Make sure to follow the steps for installing mysql and rbenv [here](https://gith
 
 After doing so, clone this repository, then navigate to the "commerce_bank_api" directoryin your terminal. Type the following commands:
 ```bash
+# there is a .ruby-version file in this repo that rbenv will detect, rbenv install will find that file and download the version specified
 rbenv install
 rbenv rehash
+
+# bundler is used to manage gem dependencies in the api
 gem install bundler
+
+# It's a good idea to run the following command every time you pull in code from master. This makes sure your dependencies are up-to-date with the .lock file
 bundle install
 ```
 
