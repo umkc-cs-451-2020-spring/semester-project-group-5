@@ -5,6 +5,9 @@ Michael Homer
 Nikoloz Dzidzava  
 Od Purevsuren  
 
+## Current Iteration Control Doc
+https://github.com/umkc-cs-451-2020-spring/semester-project-group-5/issues/30
+
 ## Installation
 Make sure to follow the steps for installing mysql and rbenv [here](https://github.com/umkc-cs-451-2020-spring/semester-project-group-5/wiki/Programming-Resources-and-Tutorials#installation-instructions) first.  
 
