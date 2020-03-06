@@ -5,6 +5,9 @@ Michael Homer
 Nikoloz Dzidzava  
 Od Purevsuren  
 
+## Current Iteration Control Doc
+https://github.com/umkc-cs-451-2020-spring/semester-project-group-5/issues/30
+
 ## Installation
 Make sure to follow the steps for installing mysql and rbenv [here](https://github.com/umkc-cs-451-2020-spring/semester-project-group-5/wiki/Programming-Resources-and-Tutorials#installation-instructions) first.  
 
@@ -29,5 +32,7 @@ To start the API server:
 ```bash 
 bundle exec rails s
 ```
+## Tools
+It is recommended that you interface with the API via a program called postman. Use the postman collection in this so that you don't have to set it all up yourself. Use the reference [here](https://github.com/umkc-cs-451-2020-spring/semester-project-group-5/blob/master/commerce_bank_api/README.md#resource-endpoints) to understand the API endpoints.
 
 
