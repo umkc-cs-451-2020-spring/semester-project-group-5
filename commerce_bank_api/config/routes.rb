@@ -35,6 +35,7 @@ Rails.application.routes.draw do
 
     # user endpoints
     post   '/users',     to: 'users#create'
+    get    '/users',     to: 'users#index'
     get    '/users/:user_id', to: 'users#show'
     put    '/users/:user_id', to: 'users#update'
     delete '/users/:user_id', to: 'users#destroy'
