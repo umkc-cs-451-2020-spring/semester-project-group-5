@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(version: 2020_04_03_034035) do
     t.text "description"
     t.string "state"
     t.boolean "hidden"
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["users_id"], name: "index_transactions_on_users_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|

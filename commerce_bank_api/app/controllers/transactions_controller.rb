@@ -11,7 +11,7 @@ class TransactionsController < ApplicationController
   end
 
   def show
-    transactions = Transaction.find(params[:transaction_id])
+    transactions = Transaction.find(params[:id])
     render json: {message:'Loaded Transaction', data: transactions}, status: :ok
   end
 
@@ -33,14 +33,13 @@ class TransactionsController < ApplicationController
 
   def transaction_params
     params.permit(
-      :transaction_id,
+      :user_id,
       :amount,
       :account_number,
       :category,
       :description,
       :state,
-      :hidden, #??
-      :timestamps
+      :hidden
     )
   end
 end

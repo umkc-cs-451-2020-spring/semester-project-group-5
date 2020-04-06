@@ -7,7 +7,7 @@ class CreateTransactions < ActiveRecord::Migration[6.0]
       t.text :description
       t.string :state
       t.boolean :hidden
-      t.belongs_to :users
+      t.belongs_to :user
       t.timestamps
     end
   end
