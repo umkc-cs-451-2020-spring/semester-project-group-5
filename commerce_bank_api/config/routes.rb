@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   scope '/api' do
-    
+
     # nested user resources
     scope '/users/:user_id' do
       get  '/accounts',        to: 'accounts#index'
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       # transactions
       get  '/transactions',        to: 'transactions#index'
       post '/transactions',        to: 'transactions#create'
-      get  '/transactions/:id',    to: 'transactions#show' 
+      get  '/transactions/:id',    to: 'transactions#show'
       put  '/transactions/:id',    to: 'transactions#update'
       post '/transactions/search', to: 'trasactions#search'
 
