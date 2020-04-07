@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::API
+  include Serializers
   include Utils
   include CommerceBankErrors
 
@@ -15,7 +16,7 @@ class ApplicationController < ActionController::API
     )
   end
 
-  def not_found
+  def not_found(exception)
     render_json error: "Not Found", status: :not_found #404
   end
 

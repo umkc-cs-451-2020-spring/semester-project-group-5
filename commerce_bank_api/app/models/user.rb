@@ -6,10 +6,13 @@ class User < ApplicationRecord
   validates :email,
             presence: true,
             uniqueness: true,
-            format: { with: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/}
+            format: { with: /[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+/}
+
   validates :username,
             presence: true,
             uniqueness: true
+
   validates :password,
-            :format: { with: /(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[`~!@#$%^&*()_+\-=+{}[\]\\|;':",.\/<>?]).{8,}/}
+            format: { with: /(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[`~!@#$%^&*()_+\-={}\[\]\\|;':",.\/<>?]).{8,}/}
+
 end
