@@ -142,23 +142,6 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Triggers",
-			"item": [
-				{
-					"name": "Create Trigger",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": ""
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
 			"name": "Sessions",
 			"item": [
 				{
