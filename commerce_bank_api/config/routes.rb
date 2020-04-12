@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       # triggered events
       get  'triggered-events',        to: 'triggered_events#index'
       get  'triggered-events/:id',    to: 'triggered_events#show'
+      post 'triggered-events',         to: 'triggered_events#create'
       post 'triggered-events/search', to: 'triggered_events#search'
 
       # triggers
