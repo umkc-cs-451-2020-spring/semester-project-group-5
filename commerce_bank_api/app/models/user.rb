@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   include States
   has_secure_password
+  has_many :transactions
 
   validates_presence_of :last_name, :first_name, :state
   validates :email,
