@@ -1,13 +1,19 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :update, :destroy]
+  before_action :authorize!, except: [:index, :create]
 
   def create
     @user = User.create!(user_params)
-    render json: @user, status: :created
+    render_as_json user_serializer(@user), status: :created
+  end
+
+  def index
+    @users = User.all.map { |u| user_serializer(u)}
+    render_as_json users: @users
   end
 
   def show
-    render json: @user, status: :ok
+    render_as_json user_serializer(@user)
   end
 
   def update
@@ -31,6 +37,8 @@ class UsersController < ApplicationController
       :first_name,
       :last_name,
       :username,
+      :password,
+      :state
     )
   end
 end
