@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_04_06_045228) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
+<<<<<<< HEAD
   create_table "transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.decimal "amount", precision: 9, scale: 2
     t.integer "account_number"
@@ -34,6 +35,8 @@ ActiveRecord::Schema.define(version: 2020_04_06_045228) do
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
+=======
+>>>>>>> master
   create_table "triggered_events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "event_type"
     t.datetime "created_at", precision: 6, null: false
