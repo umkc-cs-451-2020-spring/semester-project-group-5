@@ -23,5 +23,4 @@ class TriggeredEventsController < ApplicationController
     def triggered_event_params
         params.permit(:event_type)
     end
-
 end
