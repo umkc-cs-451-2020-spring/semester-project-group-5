@@ -5,12 +5,12 @@ class TriggersController < ApplicationController
   def index
     @triggers = Trigger.all
 
-    render json: @triggers
+    render json: @triggers, status: :ok
   end
 
   # GET /triggers/1
   def show
-    render json: @trigger
+    render json: @trigger, status: :ok
   end
 
   # POST /triggers
@@ -19,7 +19,7 @@ class TriggersController < ApplicationController
     #trigger = Trigger.create(trigger_params)
     #if @trigger
     if @trigger.save
-      render json: @trigger, status: :created, location: @trigger
+      render json: @trigger, status: :created
     else
       render json: @trigger.errors, status: :unprocessable_entity
     end
@@ -47,6 +47,6 @@ class TriggersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def trigger_params
-      params.require(:trigger).permit(:id, :type)
+      params.require(:trigger).permit(:id, :trigger_type)
     end
 end

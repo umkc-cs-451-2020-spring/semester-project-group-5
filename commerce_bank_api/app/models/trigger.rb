@@ -1,5 +1,5 @@
 class Trigger < ApplicationRecord
-    validates :type,
+    validates :trigger_type,
                presence: true,
                inclusion: { in: :trigger_types, message: "%{value} is not a valid trigger" }
 
