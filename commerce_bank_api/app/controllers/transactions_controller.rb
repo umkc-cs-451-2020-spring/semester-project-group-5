@@ -1,8 +1,8 @@
 class TransactionsController < ApplicationController
 
   def index
-    transactions = Transaction.order('created_at DESC');
-    render json: {status:'SUCCESS', message:'Loaded Transactions', data: transactions}, status: :ok
+    transactions = Transaction.all;
+    render json: {status:'SUCCESS', message:'Transactions', transactions: transactions}, status: :ok
   end
 
   def create
@@ -12,7 +12,7 @@ class TransactionsController < ApplicationController
 
   def show
     transactions = Transaction.find(params[:id])
-    render json: {message:'Loaded Transaction', data: transactions}, status: :ok
+    render json: {message:'Loaded Transaction', transaction: transactions}, status: :ok
   end
 
   def update
@@ -22,14 +22,12 @@ class TransactionsController < ApplicationController
   end
 
   def search
+    @transactions = Transaction.find(params[:id])
     @transactions.destroy!
     head :no_content
   end
 
   private
-  def find_transaction
-    @transactions = Transaction.find(params[:transaction_id])
-  end
 
   def transaction_params
     params.permit(
