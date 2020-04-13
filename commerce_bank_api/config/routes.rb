@@ -9,8 +9,9 @@ Rails.application.routes.draw do
       post '/accounts/search', to: 'accounts#search'
 
       # notifications
-      get '/notifications',     to: 'notificatins#index'
+      get '/notifications',     to: 'notifications#index'
       get '/notifications/:id', to: 'notifications#show'
+      put '/notifications/:id', to: 'notifications#update'
 
       # transactions
       get  '/transactions',        to: 'transactions#index'
