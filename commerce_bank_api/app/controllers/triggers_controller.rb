@@ -1,13 +1,6 @@
 class TriggersController < ApplicationController
   before_action :set_trigger, only: [:show, :update, :destroy]
 
-  # GET /triggers
-  def index
-    @triggers = Trigger.all
-
-    render json: @triggers, status: :ok
-  end
-
   # GET /triggers/1
   def show
     render json: @trigger, status: :ok

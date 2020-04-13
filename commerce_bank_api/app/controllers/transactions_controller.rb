@@ -1,10 +1,5 @@
 class TransactionsController < ApplicationController
 
-  def index
-    transactions = Transaction.all;
-    render json: {status:'SUCCESS', message:'Transactions', transactions: transactions}, status: :ok
-  end
-
   def create
     @transactions = Transaction.create!(transaction_params)
     render json: @transactions, status: :created
