@@ -8,6 +8,11 @@ Rails.application.routes.draw do
       get  '/accounts',        to: 'accounts#index'
       post '/accounts/search', to: 'accounts#search'
 
+      # Custom User Transaction Categories
+      post '/custom-transaction-categories', to: 'custom_transaction_categories#create'
+      get '/custom-transaction-categories', to: 'custom_transaction_categories#index'
+      delete '/custom-transaction-categories/:id', to: 'custom_transaction_categories#destroy'
+
       # notifications
       get '/notifications',     to: 'notifications#index'
       get '/notifications/:id', to: 'notifications#show'
