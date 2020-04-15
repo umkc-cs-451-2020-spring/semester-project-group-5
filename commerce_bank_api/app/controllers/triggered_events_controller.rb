@@ -5,7 +5,8 @@ class TriggeredEventsController < ApplicationController
         @triggered_event = TriggeredEvent.create!(triggered_event_params)
         render json: @triggered_event, status: :created
       end
-
+    
+    # TODO: Make this based off a search route
     def index
         triggered_events = TriggeredEvent.all
         render json: {status:'SUCCESS', message:'Loaded Triggered Events', events: triggered_events}, status: :ok

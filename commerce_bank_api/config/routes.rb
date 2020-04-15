@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     # nested user resources
     scope '/users/:user_id' do
       get  '/accounts',        to: 'accounts#index'
+      post '/accounts', to: 'accounts#create'
       post '/accounts/search', to: 'accounts#search'
 
       # Custom User Transaction Categories
