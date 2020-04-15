@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_031301) do
+ActiveRecord::Schema.define(version: 2020_04_15_040344) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
@@ -75,11 +75,15 @@ ActiveRecord::Schema.define(version: 2020_04_15_031301) do
   end
 
   create_table "triggered_events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "event_type"
+    t.string "trigger_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "account_id"
+    t.bigint "transaction_id"
+    t.bigint "trigger_id"
     t.index ["account_id"], name: "index_triggered_events_on_account_id"
+    t.index ["transaction_id"], name: "index_triggered_events_on_transaction_id"
+    t.index ["trigger_id"], name: "index_triggered_events_on_trigger_id"
   end
 
   create_table "triggers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|

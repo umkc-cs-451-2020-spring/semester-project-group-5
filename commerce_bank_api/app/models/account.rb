@@ -1,5 +1,6 @@
 class Account < ApplicationRecord
     belongs_to :user
+    has_many :triggered_events
     before_create :set_account_number
 
     # Set the limit for the account number variable

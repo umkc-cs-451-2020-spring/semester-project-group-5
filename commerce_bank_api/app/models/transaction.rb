@@ -2,6 +2,7 @@ class Transaction < ApplicationRecord
   include States
   belongs_to :user
   belongs_to :account
+  has_many :triggered_events
 
   before_validation :uppercase_transaction_type
   validates :transaction_type,
