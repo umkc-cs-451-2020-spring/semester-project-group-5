@@ -1,6 +1,17 @@
 class Transaction < ApplicationRecord
-  validates :amount, presence: true
-  validates :state, presence: true
+  include States
   belongs_to :user
   belongs_to :account
+
+  before_validation :uppercase_transaction_type
+  validates :transaction_type,
+    presence: true,
+    inclusion: { in: w%(DR CR) }
+
+  validates :amount, presence: true
+
+  private
+  def uppercase_transaction_type
+    self.transaction_type.upcase!
+  end
 end
