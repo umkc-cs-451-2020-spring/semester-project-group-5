@@ -1,6 +1,9 @@
 class Account < ApplicationRecord
     belongs_to :user
     has_many :triggered_events
+    has_many :account_transactions
+    has_many :triggers
+    has_many :triggered_events
     before_create :set_account_number
 
     # Set the limit for the account number variable
@@ -12,7 +15,7 @@ class Account < ApplicationRecord
         less_than_or_equal_to: 1_000_000
 
     # Account name should be unique with respect to the user
-    validates :name, uniqueness: { scope: :user }
+    validates :name, presence: true, uniqueness: { scope: :user }
 
     private
     def set_account_number

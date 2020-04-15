@@ -11,7 +11,7 @@ class AccountsController < ApplicationController
         render_json accounts: @accounts, count: @accounts.count
     end
 
-    def show
+    def search
         @account = Account.find_by(search_params)
         render_as_json @account
     end

@@ -14,7 +14,7 @@ class CustomTransactionCategoriesController < ApplicationController
     def destroy
         @category = CustomTransactionCategory.find(params[:id])
         @category.delete
-        head :ok
+        head :no_content
     end
     private
     def create_category_params

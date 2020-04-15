@@ -8,7 +8,7 @@ class CreateAccounts < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
-    add_reference :transactions, :account
+    add_reference :account_transactions, :account
     add_reference :triggers, :account
     add_reference :triggered_events, :account
   end

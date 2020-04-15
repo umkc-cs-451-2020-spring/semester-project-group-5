@@ -24,20 +24,18 @@ Rails.application.routes.draw do
     post '/transactions',        to: 'transactions#create'
     get  '/transactions/:id',    to: 'transactions#show'
     put  '/transactions/:id',    to: 'transactions#update'
-    post '/transactions/search', to: 'trasactions#search'
+    post '/transactions/search', to: 'transactions#search'
 
     # triggers
     post   '/triggers',        to: 'triggers#create'
     get    '/triggers/:id',    to: 'triggers#show'
     put    '/triggers/:id',    to: 'triggers#update'
     delete '/triggers/:id',    to: 'triggers#destroy'
-    post   '/triggers/search', to: 'triggers#search'
+    post   '/triggers/search', to: 'triggers#index'
 
     # triggered events
-    get  'triggered-events',        to: 'triggered_events#index'
     get  'triggered-events/:id',    to: 'triggered_events#show'
-    post 'triggered-events',         to: 'triggered_events#create'
-    post 'triggered-events/search', to: 'triggered_events#search'
+    post 'triggered-events/search', to: 'triggered_events#index'
 
     # user endpoints
     post   '/users',     to: 'users#create'

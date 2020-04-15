@@ -1,13 +1,12 @@
-class Transaction < ApplicationRecord
+class AccountTransaction < ApplicationRecord
   include States
-  belongs_to :user
   belongs_to :account
   has_many :triggered_events
 
   before_validation :uppercase_transaction_type
   validates :transaction_type,
     presence: true,
-    inclusion: { in: w%(DR CR) }
+    inclusion: { in: %w(DR CR) }
 
   validates :amount, presence: true
 

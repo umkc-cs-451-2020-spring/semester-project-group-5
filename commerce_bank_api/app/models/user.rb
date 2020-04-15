@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   include States
   has_secure_password
-  has_many :transactions
   has_many :notifications, dependent: :destroy
   has_many :custom_transaction_categories
   has_many :accounts
