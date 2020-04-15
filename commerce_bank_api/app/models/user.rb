@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :notifications, dependent: :destroy
   has_many :custom_transaction_categories
   has_many :accounts
+  has_many :login_histories
 
   validates_presence_of :last_name, :first_name, :state
   validates :email,
