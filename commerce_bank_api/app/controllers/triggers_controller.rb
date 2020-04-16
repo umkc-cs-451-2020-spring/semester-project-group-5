@@ -1,13 +1,6 @@
 class TriggersController < ApplicationController
   before_action :set_trigger, only: [:show, :update, :destroy]
 
-  # GET /triggers
-  def index
-    @triggers = Trigger.all
-
-    render json: @triggers, status: :ok
-  end
-
   # GET /triggers/1
   def show
     render json: @trigger, status: :ok
@@ -15,7 +8,8 @@ class TriggersController < ApplicationController
 
   # POST /triggers
   def create
-    @trigger = Trigger.new(trigger_params)
+    @account = Account.find_by(account_params)
+    @trigger = @account.triggers.new(trigger_params)
     #trigger = Trigger.create(trigger_params)
     #if @trigger
     if @trigger.save
@@ -27,7 +21,7 @@ class TriggersController < ApplicationController
 
   # PATCH/PUT /triggers/1
   def update
-    if @trigger.update(trigger_params)
+    if @trigger.update(trigger_type: params[:trigger_type])
       render json: @trigger
     else
       render json: @trigger.errors, status: :unprocessable_entity
@@ -39,6 +33,12 @@ class TriggersController < ApplicationController
     @trigger.destroy
   end
 
+  def index
+    @account = Account.find_by(account_params)
+    @triggers = Trigger.where(account: @account)
+    render_json triggers: @triggers, count: @triggers.count
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_trigger
@@ -48,5 +48,9 @@ class TriggersController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def trigger_params
       params.require(:trigger).permit(:id, :trigger_type)
+    end
+
+    def account_params
+      params.permit(:account_number)
     end
 end

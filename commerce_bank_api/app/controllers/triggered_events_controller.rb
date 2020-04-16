@@ -1,14 +1,10 @@
 class TriggeredEventsController < ApplicationController
     before_action :find_triggered_event, only: [:show]
 
-    def create
-        @triggered_event = TriggeredEvent.create!(triggered_event_params)
-        render json: @triggered_event, status: :created
-      end
-
     def index
-        triggered_events = TriggeredEvent.all
-        render json: {status:'SUCCESS', message:'Loaded Triggered Events', events: triggered_events}, status: :ok
+        @account = Account.find_by(account_params)
+        @triggered_events = TriggeredEvent.where(account: @account)
+        render_json triggered_events: @triggered_events, count: @triggered_events.count
     end
 
     def show
@@ -16,6 +12,10 @@ class TriggeredEventsController < ApplicationController
     end
 
     private
+    def account_params
+        params.permit(:account_number)
+    end
+
     def find_triggered_event
         @triggered_event= TriggeredEvent.find(params[:id])
     end

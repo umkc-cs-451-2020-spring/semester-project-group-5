@@ -1,43 +1,45 @@
 class TransactionsController < ApplicationController
 
-  def index
-    transactions = Transaction.all;
-    render json: {status:'SUCCESS', message:'Transactions', transactions: transactions}, status: :ok
-  end
-
   def create
-    @transactions = Transaction.create!(transaction_params)
-    render json: @transactions, status: :created
+    @account = Account.find_by(account_params)
+    @transaction = @account.account_transactions.create!(transaction_params)
+    render json: @transaction, status: :created
   end
 
   def show
-    transactions = Transaction.find(params[:id])
+    transactions = AccountTransaction.find(params[:id])
     render json: {message:'Loaded Transaction', transaction: transactions}, status: :ok
   end
 
   def update
-    @transactions = Transaction.find(params[:id])
-    @transactions.update!(transaction_params)
+    @transactions = AccountTransaction.find(params[:id])
+    @transactions.update!(update_transaction_params)
     head :no_content
   end
 
   def search
-    @transactions = Transaction.find(params[:id])
-    @transactions.destroy!
-    head :no_content
+    @account = Account.find_by(account_params)
+    @transactions = AccountTransaction.where(account: @account)
+    render_json accounts: @transactions, count: @transactions.count
   end
 
   private
+  def account_params
+    params.permit(:account_number)
+  end
 
   def transaction_params
     params.permit(
-      :user_id,
       :amount,
-      :account_number,
       :category,
       :description,
       :state,
-      :hidden
+      :hidden,
+      :transaction_type
     )
+  end
+
+  def update_transaction_params
+    params.permit(:category, :hidden)
   end
 end

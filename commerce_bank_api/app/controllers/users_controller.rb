@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.map { |u| user_serializer(u)}
+    @users = User.all.map { |u| user_serializer(u) }
     render_as_json users: @users
   end
 

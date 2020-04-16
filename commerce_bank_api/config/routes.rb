@@ -6,33 +6,36 @@ Rails.application.routes.draw do
     # nested user resources
     scope '/users/:user_id' do
       get  '/accounts',        to: 'accounts#index'
+      post '/accounts', to: 'accounts#create'
       post '/accounts/search', to: 'accounts#search'
 
+      # Custom User Transaction Categories
+      post '/custom-transaction-categories', to: 'custom_transaction_categories#create'
+      get '/custom-transaction-categories', to: 'custom_transaction_categories#index'
+      delete '/custom-transaction-categories/:id', to: 'custom_transaction_categories#destroy'
+
       # notifications
-      get '/notifications',     to: 'notificatins#index'
+      get '/notifications',     to: 'notifications#index'
       get '/notifications/:id', to: 'notifications#show'
-
-      # transactions
-      get  '/transactions',        to: 'transactions#index'
-      post '/transactions',        to: 'transactions#create'
-      get  '/transactions/:id',    to: 'transactions#show'
-      put  '/transactions/:id',    to: 'transactions#update'
-      post '/transactions/search', to: 'trasactions#search'
-
-      # triggered events
-      get  'triggered-events',        to: 'triggered_events#index'
-      get  'triggered-events/:id',    to: 'triggered_events#show'
-      post 'triggered-events',         to: 'triggered_events#create'
-      post 'triggered-events/search', to: 'triggered_events#search'
-
-      # triggers
-      get    '/triggers',        to: 'triggers#index'
-      post   '/triggers',        to: 'triggers#create'
-      get    '/triggers/:id',    to: 'triggers#show'
-      put    '/triggers/:id',    to: 'triggers#update'
-      delete '/triggers/:id',    to: 'triggers#destroy'
-      post   '/triggers/search', to: 'triggers#search'
+      put '/notifications/:id', to: 'notifications#update'
     end
+
+    # transactions
+    post '/transactions',        to: 'transactions#create'
+    get  '/transactions/:id',    to: 'transactions#show'
+    put  '/transactions/:id',    to: 'transactions#update'
+    post '/transactions/search', to: 'transactions#search'
+
+    # triggers
+    post   '/triggers',        to: 'triggers#create'
+    get    '/triggers/:id',    to: 'triggers#show'
+    put    '/triggers/:id',    to: 'triggers#update'
+    delete '/triggers/:id',    to: 'triggers#destroy'
+    post   '/triggers/search', to: 'triggers#index'
+
+    # triggered events
+    get  'triggered-events/:id',    to: 'triggered_events#show'
+    post 'triggered-events/search', to: 'triggered_events#index'
 
     # user endpoints
     post   '/users',     to: 'users#create'
