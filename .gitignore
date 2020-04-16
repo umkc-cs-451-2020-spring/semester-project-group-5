@@ -21,3 +21,4 @@
 
 # Ignore master key for decrypting credentials and more.
 /commerce_bank_api/config/master.key
+/commerce_bank_api/.env
