@@ -3,6 +3,7 @@ module TriggerTypes
 
   included do
     validates :trigger_type,
+    uniqueness: { scope: :account },
     presence: true,
     inclusion: { in: :trigger_types, message: "%{value} is not a valid trigger" }
   end
