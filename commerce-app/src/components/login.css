@@ -1,0 +1,26 @@
+@media all and (min-width: 480px) {
+  .Login {
+    padding: 60px 0;
+    font-family: "cera_proregular", Arial, sans-serif;
+  }
+
+  .Login form {
+    margin: 0 auto;
+    max-width: 500px;
+  }
+
+  .Login .btn-primary {
+    background-color: #006747;
+    border-color: #006747;
+  }
+  
+  .Login .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+    background-color: #979797;
+    border-color: #979797; /*set the color you want here*/
+  }
+
+  .Login .commerce-text {
+    color: #979797;
+    padding: 0.5em;
+  }
+}

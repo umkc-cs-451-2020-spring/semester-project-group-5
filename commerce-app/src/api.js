@@ -23,7 +23,7 @@ export const getAccount      = (userId, searchParams) => api.post(`/users/${user
 
 // Custom Transaction Categories
 export const getTransactionCategories  = (userId) => api.get(`/users/${userId}/custom-transaction-categories`);
-export const createTransactionCategory = (userId, jsonPayload) => api.post(`/users/${userId}/custom-transaction-categories`);
+export const createTransactionCategory = (userId, jsonPayload) => api.post(`/users/${userId}/custom-transaction-categories`, jsonPayload);
 export const deleteTransactionCategory = (userId, catId) => api.delete(`/users/${userId}/custom-transaction-categories/${catId}`);
 
 // Notifications
