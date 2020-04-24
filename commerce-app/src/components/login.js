@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, FormGroup, FormControl, FormLabel, Row, Col } from "react-bootstrap";
+import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import { Link } from  "react-router-dom";
 import './login.css';
 
 export default function Login() {
@@ -34,7 +35,7 @@ export default function Login() {
           Login
         </Button>
         <div block className="d-flex justify-content-center">
-          <a href=""><p className="commerce-text">Create an Account</p></a>
+          <Link className="commerce-text" to="/signup">Create Account</Link>
         </div>
       </form>
     </div>
