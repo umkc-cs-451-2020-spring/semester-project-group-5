@@ -92,7 +92,7 @@ function SignUp() {
           </Col>
         </Row>
         <Row>
-          <Col lg={6}>
+          <Col>
             <FormGroup controlId="username" bsSize="large" className="mb-4">
               {/* <FormLabel>Username</FormLabel> */}
               <FormControl
