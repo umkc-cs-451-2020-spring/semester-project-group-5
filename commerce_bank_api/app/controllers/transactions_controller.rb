@@ -17,8 +17,16 @@ class TransactionsController < ApplicationController
     head :no_content
   end
 
+  def csv_index
+    @account = Account.find_by(account_params)
+    raise ActiveRecord::RecordNotFound unless @account
+    @transactions = AccountTransaction.where(account: @account)
+    send_data @transactions.to_csv, filename: "#{@account.account_number}-transactions-#{Date.today}.csv"
+  end
+
   def search
     @account = Account.find_by(account_params)
+    raise ActiveRecord::RecordNotFound unless @account
     @transactions = AccountTransaction.where(account: @account)
     render_json accounts: @transactions, count: @transactions.count
   end

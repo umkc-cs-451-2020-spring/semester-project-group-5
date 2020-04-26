@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     get  '/transactions/:id',    to: 'transactions#show'
     put  '/transactions/:id',    to: 'transactions#update'
     post '/transactions/search', to: 'transactions#search'
+    post '/transactions/download', to: 'transactions#csv_index'
 
     # triggers
     post   '/triggers',        to: 'triggers#create'
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
     # triggered events
     get  'triggered-events/:id',    to: 'triggered_events#show'
     post 'triggered-events/search', to: 'triggered_events#index'
+    post 'triggered-events/download', to: 'triggered_events#csv_index'
 
     # user endpoints
     post   '/users',     to: 'users#create'
