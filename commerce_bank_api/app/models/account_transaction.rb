@@ -1,4 +1,5 @@
 class AccountTransaction < ApplicationRecord
+  include GenerateCSV
   include States
   belongs_to :account
   has_many :triggered_events
