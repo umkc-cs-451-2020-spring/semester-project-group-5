@@ -42,4 +42,6 @@ class TransactionsController < ApplicationController
   def update_transaction_params
     params.permit(:category, :hidden)
   end
+
+
 end
