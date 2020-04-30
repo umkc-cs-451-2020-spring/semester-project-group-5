@@ -1,0 +1,33 @@
+@media all and (min-width: 480px) {
+  /* .SignUp {
+    padding: 60px 0;
+    font-family: "cera_proregular", Arial, sans-serif;
+  }
+
+  .SignUp form {
+    margin: 0 auto;
+    max-width: 500px;
+  } */
+
+  .Account .btn-primary {
+    background-color: #006747;
+    border-color: #006747;
+  }
+  
+  .Account .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+    background-color: #979797;
+    border-color: #979797; /*set the color you want here*/
+  }
+
+  .Account th {
+    color: #006747;
+    padding: 0.5em;
+  }
+  .Account .header {
+    color: #979797;
+    margin-bottom: 1em;
+  }
+  .Account h4 {
+    color: #006747;
+  }
+}
