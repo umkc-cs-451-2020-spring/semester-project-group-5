@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
-import { Link, Redirect, useHistory } from  "react-router-dom";
+import { Link, useHistory } from  "react-router-dom";
 import { theFrontApi } from '../api';
 import './login.css';
 
