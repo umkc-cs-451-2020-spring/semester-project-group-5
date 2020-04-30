@@ -13,7 +13,7 @@ export const getUser      = (userId) => api.get(`/users/${userId}`);
 export const deleteUser   = (userId) => api.delete(`/users/${userId}`);
 
 // Login
-// username, password
+// email, password
 export const login = (jsonPayload) => api.post(`/session`, jsonPayload);
 
 // Bank Accounts
@@ -48,7 +48,7 @@ export const getTriggers   = (searchParams) => api.post(`/triggers/search`, sear
 export const getTriggeredEvent  = (eventId) => api.get(`/triggered-events/${eventId}`);
 export const getTriggeredEvents = (searchParams) => api.post(`/triggered-events`, searchParams);
 
-const theFrontApi = {
+export const theFrontApi = {
   createUser,
   updateUser,
   getUser,
@@ -73,7 +73,5 @@ const theFrontApi = {
   deleteTrigger,
   getTriggers,
   getTriggeredEvent,
-  getTriggeredEvents,
+  getTriggeredEvents
 };
-
-export default theFrontApi;
