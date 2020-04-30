@@ -1,0 +1,19 @@
+@media all and (min-width: 480px) {
+  .Dashboard {
+      padding: 60px;
+      font-family: "cera_proregular", Arial, sans-serif;
+      color:#979797;
+  }
+  .Dashboard h4 {
+      color:#2B654A;
+  }
+  .Dashboard a {
+      color:#2B654A;
+  }
+  .Dashboard Table {
+      margin: auto;
+      margin-bottom:50px;
+      table-layout:fixed;
+  }
+
+}
