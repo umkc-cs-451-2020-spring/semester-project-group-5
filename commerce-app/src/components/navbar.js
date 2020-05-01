@@ -5,7 +5,7 @@ import './navbar.css';
 
 export default function CommerceNav() {
   return (
-    <Navbar bg='light' expand='lg'>
+    <Navbar sticky='top' bg='light' expand='lg'>
       <NavbarBrand className='mr-auto ml-3 commerce-text-theme' href="/dashboard">
         <img 
           src='/logo.png'
