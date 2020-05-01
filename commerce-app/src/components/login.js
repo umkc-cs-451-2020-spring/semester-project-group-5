@@ -2,13 +2,15 @@ import React, {useState} from 'react';
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import { Link, useHistory } from  "react-router-dom";
 import { theFrontApi } from '../api';
+import userTracker from '../utils/user-tracker';
 import './login.css';
 
-export default function Login() {
-  let history = useHistory();
+export default function Login(props) {
   const [error, setError] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [user, setUser] = userTracker();
+  let history = useHistory();
 
   function invalidLoginAlert() {
     if (error) {
@@ -25,17 +27,15 @@ export default function Login() {
   */
   function handleSubmit(event) {
     event.preventDefault();
-    let payload = { email: email, password: password, };
 
-    theFrontApi.login(payload)
+    theFrontApi.login({ email: email, password: password })
       .then((resp) => {
-        console.log(resp);
         if (resp.status == 201) {
-          history.push('/dashboard')
+          setUser(resp.data.user);
+          history.push('/dashboard');
         }
       })
       .catch((error) => {
-        console.log(error.response);
         if (error.response.status == 401) {
           setError(true);
           setEmail('');

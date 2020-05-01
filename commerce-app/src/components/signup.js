@@ -58,8 +58,7 @@ const STATES = [
   "WY"
 ]
 
-function SignUp() {
-  let history = useHistory();
+function SignUp(props) {
   const [errors, setErrors] = useState(false);
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -68,6 +67,7 @@ function SignUp() {
   const [state, setState] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
+  let history = useHistory();
 
   function renderFormErrors() {
     if (errors) {
@@ -95,21 +95,14 @@ function SignUp() {
 
     theFrontApi.createUser(payload)
       .then((resp) => {
-        if (resp.status === 201 ) {
-          theFrontApi.login({email: email, password: password});
-          history.push('/dashboard');
+        if (resp.status == 201 ) {
+          history.push('/login')
         }
       })
       .catch((error) => {
         if (error.response.status === 422){
-          setEmail('');
-          setFirstName('');
-          setLastName('');
-          setUsername('');
-          setState('');
           setPassword('');
           setPasswordConfirmation('');
-          
           setErrors(error.response.data.errors);
         }
       });
