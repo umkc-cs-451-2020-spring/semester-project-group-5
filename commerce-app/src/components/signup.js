@@ -74,7 +74,7 @@ function SignUp(props) {
       return(
         <div className='alert alert-danger' role='alert'>
           <ul>
-            {Object.keys(errors).map(key => <li>{key + ': ' + errors[key][0]}</li> )}
+            {Object.keys(errors).map(key => <li>{`${key} ${errors[key][0]}`}</li> )}
           </ul>
         </div>
       )
@@ -96,7 +96,7 @@ function SignUp(props) {
     theFrontApi.createUser(payload)
       .then((resp) => {
         if (resp.status == 201 ) {
-          history.push('/login')
+          history.push('/')
         }
       })
       .catch((error) => {
