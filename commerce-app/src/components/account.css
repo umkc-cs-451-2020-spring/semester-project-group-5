@@ -30,4 +30,13 @@
   .Account h4 {
     color: #006747;
   }
+  #right-panel-link {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #006747;
+    margin-bottom: 2em;
+  }
+  
+
 }
