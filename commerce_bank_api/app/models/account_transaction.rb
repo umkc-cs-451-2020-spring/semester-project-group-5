@@ -18,7 +18,7 @@ class AccountTransaction < ApplicationRecord
   end
 
   def run_triggers
-    if transaction_type == 'DR'
+    if transaction_type == 'CR'
       Trigger.run_account_triggers(self)
     end
   end
