@@ -9,7 +9,7 @@ return (
             <h4>Account #****8989 -- Primary Savings</h4> 
             <h6>Current Balance: $65687.00</h6>
         </div>
-        <Table bordered striped>
+        <Table bordered striped >
 
             <thead className='commerce-text'> 
                 <tr>
