@@ -16,7 +16,7 @@ export default function CommerceNav() {
       <Nav>
         <NavLink className='mr-sm-2' href='#'>Notifications</NavLink>
         <NavDropdown alignRight={true} title='Profile' className='mr-sm-3' href='#' size='sm'>
-          <NavDropdown.Item className='py-0 my-0'>View Profile</NavDropdown.Item>
+          <NavDropdown.Item className='py-0 my-0'>Profile</NavDropdown.Item>
           <NavDropdown.Divider className='py-0' />
           <NavDropdown.Item className='py-0 my-0'>Log Out</NavDropdown.Item>
         </NavDropdown>
