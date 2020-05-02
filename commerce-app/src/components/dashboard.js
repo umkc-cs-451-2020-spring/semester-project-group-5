@@ -1,12 +1,14 @@
 import React from 'react';
 import './dashboard.css';
 import { Container, Row, Col, Table } from 'react-bootstrap';
+import userTracker from '../utils/user-tracker';
 
+export default function Dashboard(props) {
+    const [user, setUser] = userTracker();
 
-export default function Dashboard() {
     return(
       <div className="Dashboard">
-          <h4>Hello, John Apple.</h4>
+          <h4>{`Hello, ${user().first_name} ${user().last_name}!`}</h4>
           <h6><i>Your total balance is $25855.88</i></h6>
           <Table responsive>
                 <thead>
