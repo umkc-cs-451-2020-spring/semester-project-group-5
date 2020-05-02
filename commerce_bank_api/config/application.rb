@@ -46,7 +46,7 @@ module CommerceBankApi
     # Allow ajax through cors
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'localhost:3001'
+        origins 'localhost:3001', /[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/
         resource '*', headers: :any, methods: [:get, :post, :put, :patch, :options], credentials: true
       end
     end

@@ -1,0 +1,34 @@
+@media all and (min-width: 200px) {
+  .Profile {
+    background: #f4f4f4;
+    padding: 60px 0;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+  }
+
+  .Profile .container {
+    margin: 0 auto;
+    max-width: 800px;
+  }
+
+  .Profile .form-control-lg {
+    font-size: 1rem;
+    border-radius: 0.5rem;
+  }
+
+  .Profile .card {
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 15px 0px;
+  }
+
+  .Profile .btn-primary {
+    background-color: #006747;
+    border-color: #006747;
+    border-radius: 1rem;
+    font-size: 1rem;
+  }
+
+  .Profile .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
+    background-color: #979797;
+    border-color: #979797;
+  }
+}
