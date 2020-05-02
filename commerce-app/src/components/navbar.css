@@ -1,0 +1,10 @@
+@media all and (min-width: 480px) {
+  .navbar .dropdown-item:hover, .dropdown-item:focus, .dropdown-item:active, .dropdown-item.active {
+    background-color: #006747;
+    color: white;
+  }
+
+  .navbar {
+    font-family: "cera_proregular", Arial, sans-serif;
+  }
+}
