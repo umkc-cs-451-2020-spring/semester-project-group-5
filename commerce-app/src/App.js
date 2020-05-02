@@ -7,12 +7,14 @@ import Dashboard from './components/dashboard';
 import Account from './components/account';
 import { createBrowserHistory } from "history";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import CommcerceNav from './components/navbar';
 
 function App() {
   let history = createBrowserHistory();
 
   return (
     <Router history={history}>
+      <CommcerceNav/>
       <Switch>
         {/* <Route path='/dashboard' exact component={Dashboard} /> */}
         <Route path="/dashboard" exact component={Dashboard} />

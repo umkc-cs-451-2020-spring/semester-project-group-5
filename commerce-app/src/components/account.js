@@ -4,7 +4,7 @@ import "./account.css";
 
 export default function Account(props) {
     const account_number = props.match.params.account_number;
-
+  
     return (
         <div className='Account'>
             <div className = 'header'>
@@ -53,6 +53,7 @@ export default function Account(props) {
                     </tr>
                 </tbody>
             </Table>
+        <div> <Button variant="link" id="right-panel-link">Download Transactions in a CSV File</Button> </div>
         </div>
     
     );
