@@ -19,8 +19,8 @@ function createTransactionRow(transaction) {
     );
 }
 
-export default function Account() {
-    const account_number = '558836379';
+export default function Account(props) {
+    const account_number = props.match.params.account_number;
     const transactions = [
     
     {
@@ -48,7 +48,7 @@ export default function Account() {
 return (
     <div className='Account'>
         <div className = 'header'>
-            <h4>Account</h4> 
+            <h4>{`Account ${account_number} -- Primary Savings`}</h4> 
             <h6><i>Current Balance</i></h6>
         </div>
         <Table bordered striped>
@@ -74,7 +74,7 @@ return (
             
         </Table>
         <div> <Button variant="link" id="right-panel-link">Download Transactions in a CSV File</Button> </div>
-    </div>
-
-);
+        </div>
+    
+    );
 }

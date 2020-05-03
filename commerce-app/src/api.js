@@ -1,9 +1,25 @@
 import axios from 'axios'
+import {useHistory} from 'react-router-dom';
 
-const api = axios.create({
-  baseURL: 'http://localhost:3000/api',
-  withCredentials: true,
-});
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = 'http://localhost:3000/api';
+
+const api = axios.create();
+api.interceptors.response.use(
+  function (resp) {
+    // We don't want to do anything when a response is successful
+    // So we will just return the response here
+    return resp
+  },
+  function (error) {
+    // Here is where we intercept the HTTP errors, 401 we want to redirect to login
+    if (error.response.status == 401) {
+      let history = useHistory();
+      history.push('/');
+    }
+    return Promise.reject(error);
+  }
+);
 
 // users
 // email, firstName, lastName, userName, password, passwordConfirmation, state
@@ -13,8 +29,8 @@ export const getUser      = (userId) => api.get(`/users/${userId}`);
 export const deleteUser   = (userId) => api.delete(`/users/${userId}`);
 
 // Login
-// username, password
-export const login = (jsonPayload) => api.post(`/session`, jsonPayload);
+// We don't use the axios instance with intercepters here because a 401 we want to do a different approach
+export const login = (jsonPayload) => axios.post(`/session`, jsonPayload);
 
 // Bank Accounts
 export const getAccountIndex = (userId) => api.get(`/users/${userId}/accounts`);
@@ -48,7 +64,7 @@ export const getTriggers   = (searchParams) => api.post(`/triggers/search`, sear
 export const getTriggeredEvent  = (eventId) => api.get(`/triggered-events/${eventId}`);
 export const getTriggeredEvents = (searchParams) => api.post(`/triggered-events`, searchParams);
 
-const theFrontApi = {
+export const theFrontApi = {
   createUser,
   updateUser,
   getUser,
@@ -73,7 +89,5 @@ const theFrontApi = {
   deleteTrigger,
   getTriggers,
   getTriggeredEvent,
-  getTriggeredEvents,
+  getTriggeredEvents
 };
-
-export default theFrontApi;

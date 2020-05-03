@@ -1,4 +1,4 @@
-@media all and (min-width: 480px) {
+@media all and (min-width: 200px) {
   .Login {
     padding: 60px 0;
     font-family: "cera_proregular", Arial, sans-serif;
@@ -16,7 +16,7 @@
   
   .Login .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
     background-color: #979797;
-    border-color: #979797; /*set the color you want here*/
+    border-color: #979797;
   }
 
   .Login .commerce-text {
