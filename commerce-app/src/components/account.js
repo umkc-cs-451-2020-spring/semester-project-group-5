@@ -1,13 +1,55 @@
 import React from "react";
 import {Button, Table} from "react-bootstrap";
 import "./account.css";
+import theFrontApi, { getTransaction } from '../api';
+
+function createTransactionRow(transaction) {
+    var sign = transaction.transaction_type == 'CR' ? '-' : '+';
+
+    return (
+    <tr>
+        <td>{transaction.account_transaction_id}</td>
+        <td>{transaction.description}</td>
+        <td>{sign + '$' + transaction.amount}</td>
+        <td>{transaction.category}</td>
+        <td>{transaction.created_at}</td>
+        <td>{transaction.end_balance}</td>
+        <td><Button>Edit</Button>{' '}</td>
+    </tr>
+    );
+}
 
 export default function Account() {
+    const account_number = '558836379';
+    const transactions = [
+    
+    {
+        account_transaction_id: '1',
+        description: 'Starbucks POS',
+        amount: '10.00',
+        category: 'Coffee',
+        created_at: '01/26/2020',
+        end_balance: '5310.00',
+        transaction_type:'CR',
+    },
+    {
+        account_transaction_id: '2',
+        description: 'Vietnamese Cafe',
+        amount: '20.00',
+        category: 'Food',
+        created_at: '02/02/2020',
+        end_balance: '5290.00',
+        transaction_type:'CR',
+    }
+];
+
+
+
 return (
     <div className='Account'>
         <div className = 'header'>
-            <h4>Account #****8989 -- Primary Savings</h4> 
-            <h6>Current Balance: $5500.00</h6>
+            <h4>Account</h4> 
+            <h6><i>Current Balance</i></h6>
         </div>
         <Table bordered striped>
 
@@ -19,67 +61,13 @@ return (
                     <th>Category</th>
                     <th>Date</th>
                     <th>End Balance</th>
+                    
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Starbucks POS</td> 
-                    <td>-$10.00</td>
-                    <td>Coffee</td> 
-                    <td>01/26/2020</td>
-                    <td>$5310.00</td>
-                    <td><Button>Edit</Button>{' '}</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Vietnamese Cafe</td> 
-                    <td>-$20.00</td>
-                    <td>Food</td> 
-                    <td>02/02/2020</td>
-                    <td>$5290.00</td>
-                    <td><Button>Edit</Button>{' '}</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Beauty Salon</td> 
-                    <td>-$50.00</td>
-                    <td>Products</td> 
-                    <td>03/08/2020</td>
-                    <td>$5240.00</td>
-                    <td><Button>Edit</Button>{' '}</td>
-                </tr>
-
-
-                <tr>
-                    <td>4</td>
-                    <td>Cinema</td> 
-                    <td>-$20.00</td>
-                    <td>Entertainment</td> 
-                    <td>03/22/2020</td>
-                    <td>$5220.00</td>
-                    <td><Button>Edit</Button>{' '}</td>
-                </tr>
-
-                <tr>
-                    <td>5</td>
-                    <td>Salary</td> 
-                    <td>$500.00</td>
-                    <td>University of Missouri- Kansas City Payroll</td> 
-                    <td>04/10/2020</td>
-                    <td>$5720.00</td>
-                    <td><Button>Edit</Button>{' '}</td>
-                </tr>
-
-                <tr>
-                    <td>6</td>
-                    <td>ST. Lukes Hospital</td> 
-                    <td>-$200.00</td>
-                    <td>Health</td> 
-                    <td>04/26/2020</td>
-                    <td>$5520.00</td>
-                    <td><Button>Edit</Button>{' '}</td>
-                </tr>
+            {transactions.map(transaction => createTransactionRow(transaction))}
+                
+                
                
             </tbody>
             

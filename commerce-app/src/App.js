@@ -3,6 +3,7 @@ import React from 'react';
 // import './App.css';
 import Login from './components/login';
 import SignUp from './components/signup';
+import Dashboard from './components/dashboard';
 import Account from './components/account';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -13,6 +14,7 @@ function App() {
       <Switch>
         <Route path="/" exact component={Login} />
         <Route path="/signup" exact component={SignUp} />
+        <Route path="/dashboard" exact component={Dashboard} />
         <Route path="/account" exact component={Account}/>
       </Switch>
     </Router>
@@ -20,5 +22,3 @@ function App() {
 }
 
 export default App;
-
-
