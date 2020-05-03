@@ -2,61 +2,9 @@ import React, {useState} from "react";
 import { Button, FormGroup, FormControl, FormLabel, Row, Col } from "react-bootstrap";
 import { useHistory } from  "react-router-dom";
 import { theFrontApi } from '../api';
+import StatesOptions from './states';
+import FormErrors from './form-errors';
 import "./signup.css";
-
-const STATES = [
-  "AK",
-  "AL",
-  "AR",
-  "AZ",
-  "CA",
-  "CO",
-  "CT",
-  "DC",
-  "DE",
-  "FL",
-  "GA",
-  "HI",
-  "IA",
-  "ID",
-  "IL",
-  "IN",
-  "KS",
-  "KY",
-  "LA",
-  "MA",
-  "MD",
-  "ME",
-  "MI",
-  "MN",
-  "MO",
-  "MS",
-  "MT",
-  "NC",
-  "ND",
-  "NE",
-  "NH",
-  "NJ",
-  "NM",
-  "NV",
-  "NY",
-  "OH",
-  "OK",
-  "OR",
-  "PA",
-  "RI",
-  "SC",
-  "SD",
-  "TN",
-  "TX",
-  "UT",
-  "VA",
-  "VT",
-  "WA",
-  "WI",
-  "WV",
-  "WY"
-]
 
 function SignUp(props) {
   const [errors, setErrors] = useState(false);
@@ -68,18 +16,6 @@ function SignUp(props) {
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   let history = useHistory();
-
-  function renderFormErrors() {
-    if (errors) {
-      return(
-        <div className='alert alert-danger' role='alert'>
-          <ul>
-            {Object.keys(errors).map(key => <li>{`${key} ${errors[key][0]}`}</li> )}
-          </ul>
-        </div>
-      )
-    }
-  }
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -111,7 +47,7 @@ function SignUp(props) {
   return (
     <div className="SignUp">
       <form onSubmit={handleSubmit}>
-        {renderFormErrors()}
+      <FormErrors errors={errors} />
       <FormGroup controlId="email" bsSize="large" className="mb-4">
           {/* <FormLabel>Email</FormLabel> */}
           <FormControl
@@ -161,7 +97,7 @@ function SignUp(props) {
           <Col>
             <FormControl as="select" onChange={e => setState(e.target.value)}>
               <option selected dissabled>-- Select State --</option>
-              { STATES.map(state => <option>{state}</option>) }
+              <StatesOptions />
             </FormControl>
           </Col>
         </Row>
