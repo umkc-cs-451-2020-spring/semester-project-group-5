@@ -6,6 +6,7 @@ import SignUp from './components/signup';
 import Dashboard from './components/dashboard';
 import Account from './components/account';
 import Profile from './components/profile';
+import Notifications from './components/notifications';
 import { createBrowserHistory } from "history";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import CommcerceNav from './components/navbar';
@@ -19,6 +20,7 @@ function App() {
       <Switch>
         {/* <Route path='/dashboard' exact component={Dashboard} /> */}
         <Route path="/dashboard" exact component={Dashboard} />
+        <Route path="/notifications" exact component={Notifications} />
         <Route path="/profile" exact component={Profile} />
         <Route path="/account/:account_number" exact component={Account} />
         <Route path="/signup" exact component={SignUp} /> 
