@@ -43,6 +43,7 @@ export const createTransactionCategory = (userId, jsonPayload) => api.post(`/use
 export const deleteTransactionCategory = (userId, catId) => api.delete(`/users/${userId}/custom-transaction-categories/${catId}`);
 
 // Notifications
+export const getNotificationsWithParams = (userId, params) => api.get(`/users/${userId}/notifications`, {params});
 export const getNotifications   = (userId) => api.get(`/users/${userId}/notifications`);
 export const getNotification    = (userId, notificationId) => api.get(`/users/${userId}/notifications/${notificationId}`);
 export const updateNotification = (userId, notificationId, jsonPayload) => api.put(`/users/${userId}/notifications/${notificationId}`, jsonPayload);
@@ -76,6 +77,7 @@ export const theFrontApi = {
   getTransactionCategories,
   createTransactionCategory,
   deleteTransactionCategory,
+  getNotificationsWithParams,
   getNotifications,
   getNotification,
   updateNotification,

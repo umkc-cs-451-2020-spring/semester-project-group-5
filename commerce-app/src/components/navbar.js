@@ -15,7 +15,7 @@ export default function CommerceNav() {
       {/* <NavbarToggle as='button' aria-controls="basic-navbar-nav" /> */}
       <Nav>
         <NavLink className='mr-sm-2' href='/dashboard'>Dashboard</NavLink>
-        <NavLink className='mr-sm-2' href='#'>Notifications</NavLink>
+        <NavLink className='mr-sm-2' href='/notifications'>Notifications</NavLink>
         <NavDropdown alignRight={true} title='Profile' className='mr-sm-3' href='#'>
           <NavDropdown.Item className='py-0 my-0' href='/profile'>Profile</NavDropdown.Item>
           <NavDropdown.Divider className='py-0' />
