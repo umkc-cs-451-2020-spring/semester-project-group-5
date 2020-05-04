@@ -36,6 +36,7 @@ export default function Login(props) {
         }
       })
       .catch((error) => {
+        console.error(error);
         if (error.response.status == 401) {
           setError(true);
           setEmail('');

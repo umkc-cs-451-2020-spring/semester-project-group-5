@@ -1,144 +1,133 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './dashboard.css';
 import { Container, Row, Col, Table } from 'react-bootstrap';
 import userTracker from '../utils/user-tracker';
+import { theFrontApi } from '../api';
+
+function createTransactionRow(transaction) {
+    var sign = transaction.transaction_type == 'CR' ? '-' : '+';
+
+    return (
+    <tr>
+        <td>{transaction.created_at}</td>
+        <td>{transaction.description}</td>
+        <td>{sign + '$' + transaction.amount}</td>
+        <td>{transaction.state}</td>
+    </tr>
+    );
+}
+
+
 
 export default function Dashboard(props) {
-    const [user, setUser] = userTracker();
+    // const [user, setUser] = userTracker();
+    // async function getUserAccounts() {
+    //     let index = await theFrontApi.getAccountIndex(user().id);
+    //     return index;
+    // }
+    // async function setTransactions(account) {
+    //     return await theFrontApi.getTransactions(account.account_number);
+    // }
+    // console.warn(getUserAccounts());
+    // const accountsIndex = getUserAccounts().data;
+    const transactions = [
+        // [
+        {
+            created_at: '04/18/20',
+            description: 'Starbucks',
+            amount: '7.82',
+            state: 'MO',
+            transaction_type: 'CR',
+        },
+        {
+            created_at: '04/17/20',
+            description: 'Target',
+            amount: '10.00',
+            state: 'MO', 
+            transaction_type: 'CR',
+        },
+        {
+            created_at: '04/15/20',
+            description: 'Amazon',
+            amount: '29.34',
+            state: 'MO',
+            transaction_type: 'CR',
+        },
+        {
+            created_at: '04/11/20',
+            description: 'Money Transfer',
+            amount: '1750.00',
+            state: 'MO',
+            transaction_type: 'DR',}
+        // ],
+        // [{
+        //     created_at: '04/20/20',
+        //     description: 'Donut Shop',
+        //     amount: '42.00',
+        //     state: 'MO',
+        //     transaction_type: 'CR',
+        // },
+        // {
+        //     created_at: '04/19/20',
+        //     description: 'PayPal',
+        //     amount: '225.00',
+        //     state: 'MO', 
+        //     transaction_type: 'DR',
+        // },
+        // {
+        //     created_at: '04/16/20',
+        //     description: 'Walmart',
+        //     amount: '50.64',
+        //     state: 'MO',
+        //     transaction_type: 'CR',
+        // },
+        // {
+        //     created_at: '04/14/20',
+        //     description: 'Bath & Body Works',
+        //     amount: '49.87',
+        //     state: 'MO',
+        //     transaction_type: 'CR',
+        // }]
+    ];
+    const accounts = ['*******0510', '********1927', '*******8234']
+    const totals = ['1920.43', '209.71', '378.90']
 
-    return(
-      <div className="Dashboard">
-          <h4>{`Hello, ${user().first_name} ${user().last_name}!`}</h4>
-          <h6><i>Your total balance is $25855.88</i></h6>
-          <Table responsive>
-                <thead>
-                    <tr>
-                        <th>Account #:</th>
-                        <th colSpan="2"></th>
-                        <th><a href="a1">*******1234</a></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>04/18/20</td>
-                        <td>Starbucks</td>
-                        <td>-$7.82</td>
-                        <td>Liberty, MO</td>
-                    </tr>
-                    <tr>
-                        <td>04/17/20</td>
-                        <td>Target</td>
-                        <td>-$61.97</td>
-                        <td>Mission, KS</td>
-                    </tr>
-                    <tr>
-                        <td>04/15/20</td>
-                        <td>Amazon</td>
-                        <td>-$29.34</td>
-                        <td>Kansas City, MO</td>
-                    </tr>
-                    <tr>
-                        <td>04/11/20</td>
-                        <td>Money Transfer</td>
-                        <td>+$1750.00</td>
-                        <td>Kansas City, MO</td>
-                    </tr>
-                </tbody>
-                <thead>
-                    <tr>
-                        <th>Total:</th>
-                        <th></th>
-                        <th>$1567.32</th>
-                        <th></th>
-                    </tr>
-                </thead>
-          </Table>
-          <Table Responsive>
-                <thead>
-                    <tr>
-                        <th>Account #:</th>
-                        <th colSpan="2"></th>
-                        <th><a href="a2">*******4567</a></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>04/15/20</td>
-                        <td>Direct Deposit</td>
-                        <td>+$967.32</td>
-                        <td>Kansas City, MO</td>
-                    </tr>
-                    <tr>
-                        <td>04/08/20</td>
-                        <td>Direct Deposit</td>
-                        <td>+$910.17</td>
-                        <td>Kansas City, MO</td>
-                    </tr>
-                    <tr>
-                        <td>04/01/20</td>
-                        <td>Direct Deposit</td>
-                        <td>+1017.82.94</td>
-                        <td>Kansas City, MO</td>
-                    </tr>
-                    <tr>
-                        <td>03/23/20</td>
-                        <td>Direct Deposit</td>
-                        <td>+$896.48</td>
-                        <td>Kansas City, MO</td>
-                    </tr>
-                </tbody>
-                <thead>
-                    <tr>
-                        <th>Total:</th>
-                        <th></th>
-                        <th>$12895.72</th>
-                        <th></th>
-                    </tr>
-                </thead>
-            </Table>
+    function createAccountTable(account) {
+        // const transactions = setTransactions(account);
+        return(
             <Table Responsive>
                 <thead>
                     <tr>
                         <th>Account #:</th>
                         <th colSpan="2"></th>
-                        <th><a href="a3">*******6789</a></th>
+                        <th><a href="api/users/1/accounts"> *******0510 </a></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>04/14/20</td>
-                        <td>PayPal Transfer</td>
-                        <td>+300.00</td>
-                        <td>Kansas City, MO</td>
-                    </tr>
-                    <tr>
-                        <td>04/12/20</td>
-                        <td>IRS TREAS TR</td>
-                        <td>+$1200.00</td>
-                        <td>Kansas City, MO</td>
-                    </tr>
-                    <tr>
-                        <td>04/11/20</td>
-                        <td>Money Transfer</td>
-                        <td>-$1750.00</td>
-                        <td>Kansas City, MO</td>
-                    </tr>
-                    <tr>
-                        <td>04/10/20</td>
-                        <td>Check Deposit</td>
-                        <td>+275.00</td>
-                        <td>Kansas City, MO</td>
-                    </tr>
+                    { transactions.map(transaction => createTransactionRow(transaction)) }
                 </tbody>
                 <thead>
                     <tr>
                         <th>Total:</th>
                         <th></th>
-                        <th>$11392.84</th>
+                        <th>{ totals.map(total)}</th>
                         <th></th>
                     </tr>
                 </thead>
             </Table>
+        );
+    
+    }
+
+    return(
+      <div className="Dashboard">
+            {/* <h4>{`Hello, ${user().first_name} ${user().last_name}!`}</h4> */}
+            <h4>"Hello, Bobby Bob"</h4>
+            <h6><i>"Your total balance is $877.71"</i></h6>
+            
+            {accounts.map(account => createAccountTable(account))}
+
+
       </div>
     );
 }
