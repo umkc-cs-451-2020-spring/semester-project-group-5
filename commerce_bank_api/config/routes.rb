@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get  '/accounts',        to: 'accounts#index'
       post '/accounts', to: 'accounts#create'
       post '/accounts/search', to: 'accounts#search'
+      put  '/accounts', to: 'accounts#update'
 
       # Custom User Transaction Categories
       post '/custom-transaction-categories', to: 'custom_transaction_categories#create'

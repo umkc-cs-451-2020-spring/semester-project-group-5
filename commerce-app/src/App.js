@@ -5,6 +5,7 @@ import Login from './components/login';
 import SignUp from './components/signup';
 import Dashboard from './components/dashboard';
 import Account from './components/account';
+import AccountSettings from './components/account-settings';
 import Profile from './components/profile';
 import Notifications from './components/notifications';
 import { createBrowserHistory } from "history";
@@ -23,6 +24,7 @@ function App() {
         <Route path="/notifications" exact component={Notifications} />
         <Route path="/profile" exact component={Profile} />
         <Route path="/account/:account_number" exact component={Account} />
+        <Route path="/account/:account_number/settings" exact component={AccountSettings} />
         <Route path="/signup" exact component={SignUp} /> 
         <Route path="/" exact component={Login} />
       </Switch>

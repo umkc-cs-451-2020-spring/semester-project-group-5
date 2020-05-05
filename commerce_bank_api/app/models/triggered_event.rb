@@ -6,6 +6,7 @@ class TriggeredEvent < ApplicationRecord
     belongs_to :account_transaction
     after_create :send_notification
 
+    # It would be much better to set each of these up as I18n strings in a locals file, but I didn't have time to set one up
     def send_notification
         case self.trigger_type
         when 'LowAccountBalanceTrigger'

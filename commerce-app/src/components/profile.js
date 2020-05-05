@@ -11,7 +11,6 @@ import userTracker from '../utils/user-tracker';
 import UserInfo from './user-info';
 import AccountProfile from './account-profile';
 import './profile.css';
-import { theFrontApi } from '../api';
 
 export default function Profile() {
   return (
