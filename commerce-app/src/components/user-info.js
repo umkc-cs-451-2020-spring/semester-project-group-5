@@ -10,6 +10,7 @@ import {
 import userTracker from '../utils/user-tracker';
 import StatesOptions from './states';
 import {theFrontApi} from '../api';
+import renderSuccessfulPut from './render-success';
 import FormErrors from './form-errors';
 
 export default function UserInfo() {
@@ -20,16 +21,6 @@ export default function UserInfo() {
   const [email, setEmail] = useState(user().email);
   const [username, setUsername] = useState(user().username);
   const [state, setState] = useState(user().state);
-
-  function renderSuccessfulPut(){
-    if (wasUpdated) {
-      return(
-        <div className='alert alert-success' role='alert'>
-          <p>Information Updated!</p>
-        </div>
-      )
-    }
-  }
 
   function changeAttribute(event, stateSetter) {
     stateSetter(event.target.value);
@@ -43,6 +34,7 @@ export default function UserInfo() {
       state: state,
     };
 
+    // This is gross, plz no judge
     theFrontApi.updateUser(user().id, payload)
       .then((resp) => {
         if (resp.status == 204) {
@@ -62,7 +54,7 @@ export default function UserInfo() {
   return (
     <div className='PersonalInfo'>
     <h5>Personal Info</h5>
-      {renderSuccessfulPut()}
+      {wasUpdated ? renderSuccessfulPut() : null}
       <FormErrors errors={errors}/>
       <Form className='mt-4'>
         <Form.Row className='mb-3'>
