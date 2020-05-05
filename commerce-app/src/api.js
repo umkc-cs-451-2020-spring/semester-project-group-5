@@ -52,6 +52,7 @@ export const createTransaction = (jsonPayload) => api.post(`/transactions`, json
 export const getTransaction    = (transactionId) => api.get(`/transactions/${transactionId}`);
 export const updateTransaction = (transactionId, jsonPayload) => api.put(`/transactions/${transactionId}`, jsonPayload);
 export const getTransactions   = (jsonPayload) => api.post(`/transactions/search`, jsonPayload);
+export const exportTransactions = (jsonPayload) => api.post('/transactions/download', jsonPayload);
 
 // Triggers
 export const createTrigger = (jsonPayload) => api.post(`/triggers`, jsonPayload);
@@ -89,5 +90,6 @@ export const theFrontApi = {
   deleteTrigger,
   getTriggers,
   getTriggeredEvent,
-  getTriggeredEvents
+  getTriggeredEvents,
+  exportTransactions
 };
