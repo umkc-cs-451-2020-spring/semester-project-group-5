@@ -21,6 +21,8 @@ import Account from './account';
 
 const loadingMessage = <span className="d-flex m-auto">Loading...</span>;
 
+// The account card body gets rendered when the account is finished loading
+// from the api. This view both shows and updates the config for the passed account
 function AccountCardBody(props) {
   const [name, setName] = useState();
   const [user, setUser] = userTracker();
@@ -64,7 +66,7 @@ function AccountCardBody(props) {
             disabled
             size='lg'
             type='date'
-            value='2020-01-01'
+            value={props.account.created_at.slice(0,10)}
           />
         </FormGroup>
         <FormGroup>
@@ -90,6 +92,8 @@ function AccountCardBody(props) {
   );
 }
 
+// This section serves as a conditional render for the Account card body
+// If the component is finished loading, the account card body will be called
 function AccountConfig(props) {
   const [wasUpdated, setWasUpdated] = useState(false);
   const [errors, setErrors] = useState(false);
@@ -111,6 +115,9 @@ function AccountConfig(props) {
   );
 }
 
+// this is the main componet of this view
+// The purpose of this component is to oversee the api calls for each of its sub 
+// Components
 export default function AccountSettings(props) {
   const account_number = props.match.params.account_number;
   const [account, setAccount] = useState();
@@ -160,9 +167,11 @@ export default function AccountSettings(props) {
           <Card.Body>
             <ListGroup variant='flush'>
               <ListGroupItem className='py-5'>
+                <h5>Account Info</h5>
                 <AccountConfig account={account} isLoading={accountIsLoading}/>
               </ListGroupItem>
               <ListGroupItem className='py-5'>
+                <h5>Account Triggers</h5>
                 <TriggerConfig
                   type='LowAccountBalanceTrigger'
                   account_number={account_number}
