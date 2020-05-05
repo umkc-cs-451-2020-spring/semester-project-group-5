@@ -1,0 +1,36 @@
+@media all and (min-width: 200px) {
+  html body {
+    background: #f4f4f4;
+  }
+  .Notifications {
+    padding: 60px 0;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif; 
+  }
+
+  .Notifications .card {
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 15px 0px;
+    margin: 0 auto;
+    max-width: 700px;
+  }
+
+  .Notifications .card-header {
+    padding: 0.5rem 1rem;
+  }
+
+  .Notifications .card-body {
+    padding: 0.75rem;
+  }
+
+  .Notifications .btn-primary {
+    background-color:  #fff;
+    border-color: #fff;
+    color: red;
+  }
+
+  .Notifications .btn-primary:hover {
+    color: #979797;
+    border-color: #979797;
+    background-color: #fff;
+  }
+}

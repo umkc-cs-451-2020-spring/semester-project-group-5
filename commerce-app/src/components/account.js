@@ -1,18 +1,20 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {Button, Table} from "react-bootstrap";
+import {Link} from 'react-router-dom';
 import "./account.css";
-import theFrontApi, { getTransaction } from '../api';
+import { theFrontApi } from '../api';
+import userTracker from '../utils/user-tracker';
 
 function createTransactionRow(transaction) {
     var sign = transaction.transaction_type == 'CR' ? '-' : '+';
 
     return (
     <tr>
-        <td>{transaction.account_transaction_id}</td>
+        <td>{transaction.id}</td>
         <td>{transaction.description}</td>
         <td>{sign + '$' + transaction.amount}</td>
         <td>{transaction.category}</td>
-        <td>{transaction.created_at}</td>
+        <td>{transaction.created_at.slice(0,10)}</td>
         <td>{transaction.end_balance}</td>
         <td><Button>Edit</Button>{' '}</td>
     </tr>
@@ -21,60 +23,49 @@ function createTransactionRow(transaction) {
 
 export default function Account(props) {
     const account_number = props.match.params.account_number;
-    const transactions = [
-    
-    {
-        account_transaction_id: '1',
-        description: 'Starbucks POS',
-        amount: '10.00',
-        category: 'Coffee',
-        created_at: '01/26/2020',
-        end_balance: '5310.00',
-        transaction_type:'CR',
-    },
-    {
-        account_transaction_id: '2',
-        description: 'Vietnamese Cafe',
-        amount: '20.00',
-        category: 'Food',
-        created_at: '02/02/2020',
-        end_balance: '5290.00',
-        transaction_type:'CR',
+    const [user, setUser] = userTracker();
+    const [transactions, setTransactions] = useState([]);
+    const [account, setAccount] = useState({});
+
+    async function getTransactions() {
+        let resp = await theFrontApi.getTransactions({account_number: account_number});
+        setTransactions(resp.data.transactions);
     }
-];
 
+    async function getAccount() {
+        let resp = await theFrontApi.getAccount(user().id, {account_number: account_number});
+        setAccount(resp.data);
+    }
 
+    useEffect(() => {
+        getTransactions();
+        getAccount();
+    }, []);
 
-return (
-    <div className='Account'>
-        <div className = 'header'>
-            <h4>{`Account ${account_number} -- Primary Savings`}</h4> 
-            <h6><i>Current Balance</i></h6>
+    return (
+        <div className='Account'>
+            <div className = 'header'>
+                <h4>{`Account ${account_number} -- ${account.name}`}</h4> 
+                <h6><i>{`Current Balance: $${account.balance}`}</i></h6>
+            </div>
+            <Table bordered striped>
+                <thead> 
+                    <tr>
+                        <th>Transaction Number</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>End Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {transactions.map(transaction => createTransactionRow(transaction))}
+                </tbody>
+            </Table>
+            <div className='text-center'>
+                <Link to={`/account/${account_number}/settings`}>Settings</Link> | <Link >Download Transactions in a CSV File</Link>
+            </div>
         </div>
-        <Table bordered striped>
-
-            <thead> 
-                <tr>
-                    <th>Transaction Number</th>
-                    <th>Description</th>
-                    <th>Amount</th>
-                    <th>Category</th>
-                    <th>Date</th>
-                    <th>End Balance</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-            {transactions.map(transaction => createTransactionRow(transaction))}
-                
-                
-               
-            </tbody>
-            
-            
-        </Table>
-        <div> <Button variant="link" id="right-panel-link">Download Transactions in a CSV File</Button> </div>
-        </div>
-    
     );
 }

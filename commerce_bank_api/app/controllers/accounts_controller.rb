@@ -6,6 +6,12 @@ class AccountsController < ApplicationController
         render_as_json @account, status: :created
     end
 
+    def update
+        @account = Account.find_by(search_params)
+        @account.update(update_params)
+        head :no_content
+    end
+
     def index
         @accounts = Account.where(user_id: params[:user_id])
         render_json accounts: @accounts, count: @accounts.count
@@ -17,6 +23,10 @@ class AccountsController < ApplicationController
     end
 
     private
+    def update_params
+        params.permit(:name)
+    end
+
     def account_params
         params.permit(:user_id, :name)
     end

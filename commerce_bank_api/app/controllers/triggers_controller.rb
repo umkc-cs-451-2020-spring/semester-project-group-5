@@ -21,7 +21,7 @@ class TriggersController < ApplicationController
 
   # PATCH/PUT /triggers/1
   def update
-    if @trigger.update(trigger_type: params[:trigger_type])
+    if @trigger.update(bound: params[:bound])
       render json: @trigger
     else
       render json: @trigger.errors, status: :unprocessable_entity
@@ -47,7 +47,7 @@ class TriggersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def trigger_params
-      params.require(:trigger).permit(:id, :trigger_type)
+      params.permit(:id, :trigger_type, :bound)
     end
 
     def account_params

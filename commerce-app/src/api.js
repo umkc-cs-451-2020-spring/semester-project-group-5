@@ -14,6 +14,7 @@ api.interceptors.response.use(
   function (error) {
     // Here is where we intercept the HTTP errors, 401 we want to redirect to login
     if (error.response.status == 401) {
+      console.log('oops 401');
       let history = useHistory();
       history.push('/');
     }
@@ -36,6 +37,7 @@ export const login = (jsonPayload) => axios.post(`/session`, jsonPayload);
 export const getAccountIndex = (userId) => api.get(`/users/${userId}/accounts`);
 export const createAccount   = (userId, jsonPayload) => api.post(`/users/${userId}/accounts`, jsonPayload);
 export const getAccount      = (userId, searchParams) => api.post(`/users/${userId}/accounts/search`, searchParams);
+export const updateAccount   = (userId, updateParams) => api.put(`/users/${userId}/accounts`, updateParams);
 
 // Custom Transaction Categories
 export const getTransactionCategories  = (userId) => api.get(`/users/${userId}/custom-transaction-categories`);
@@ -43,6 +45,7 @@ export const createTransactionCategory = (userId, jsonPayload) => api.post(`/use
 export const deleteTransactionCategory = (userId, catId) => api.delete(`/users/${userId}/custom-transaction-categories/${catId}`);
 
 // Notifications
+export const getNotificationsWithParams = (userId, params) => api.get(`/users/${userId}/notifications`, {params});
 export const getNotifications   = (userId) => api.get(`/users/${userId}/notifications`);
 export const getNotification    = (userId, notificationId) => api.get(`/users/${userId}/notifications/${notificationId}`);
 export const updateNotification = (userId, notificationId, jsonPayload) => api.put(`/users/${userId}/notifications/${notificationId}`, jsonPayload);
@@ -74,9 +77,11 @@ export const theFrontApi = {
   getAccountIndex,
   createAccount,
   getAccount,
+  updateAccount,
   getTransactionCategories,
   createTransactionCategory,
   deleteTransactionCategory,
+  getNotificationsWithParams,
   getNotifications,
   getNotification,
   updateNotification,
