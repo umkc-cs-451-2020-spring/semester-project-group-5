@@ -28,7 +28,7 @@ class TransactionsController < ApplicationController
     @account = Account.find_by(account_params)
     raise ActiveRecord::RecordNotFound unless @account
     @transactions = AccountTransaction.where(account: @account)
-    render_json accounts: @transactions, count: @transactions.count
+    render_json transactions: @transactions, count: @transactions.count
   end
 
   private
