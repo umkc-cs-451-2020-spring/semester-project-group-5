@@ -36,4 +36,12 @@
     background-color: #979797;
     border-color: #979797;
   }
+
+  .Profile a {
+    color: #636363;
+  }
+
+  .Profile a:hover {
+    color: #006747;
+  }
 }

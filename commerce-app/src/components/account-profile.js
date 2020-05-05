@@ -5,6 +5,7 @@ import {
   Col,
   Button
 } from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 import userTracker from '../utils/user-tracker';
 import { theFrontApi }  from '../api';
 
@@ -13,9 +14,15 @@ function AccountCard(props) {
     <Card className='my-4'>
       <Card.Body className='p-4' style={{color: '#636363'}}>
         <Row>
-          <Col>{`Account *****${props.account.account_number % 10_000}`}</Col>
+          <Col>
+            <Link to={`/account/${props.account.account_number}`}>
+              {`Account *****${props.account.account_number % 10_000}`}
+            </Link>
+          </Col>
           <Col className='text-center'>{props.account.name}</Col>
-          <Col className='text-center'>Settings</Col>
+          <Col className='text-center'>
+            <Link to={`/account/${props.account.account_number}/settings`}>Settings</Link>
+          </Col>
         </Row>
       </Card.Body>
     </Card>

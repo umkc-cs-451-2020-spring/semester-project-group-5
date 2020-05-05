@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {Button, Table} from "react-bootstrap";
+import {Link} from 'react-router-dom';
 import "./account.css";
 import { theFrontApi } from '../api';
 import userTracker from '../utils/user-tracker';
@@ -62,8 +63,8 @@ export default function Account(props) {
                     {transactions.map(transaction => createTransactionRow(transaction))}
                 </tbody>
             </Table>
-            <div>
-                <Button variant="link" id="right-panel-link">Download Transactions in a CSV File</Button>
+            <div className='text-center'>
+                <Link to={`/account/${account_number}/settings`}>Settings</Link> | <Link >Download Transactions in a CSV File</Link>
             </div>
         </div>
     );

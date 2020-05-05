@@ -38,7 +38,7 @@ function AccountTable(props) {
                 <tr>
                     <th>Account #:</th>
                     <th colSpan="2"></th>
-                    <th><a href={`/accounts/${account.account_number}`}> *****${props.account.account_number % 10_000} </a></th>
+                    <th><a href={`/account/${account.account_number}`}> {`*****${props.account.account_number % 10_000}`} </a></th>
                 </tr>
             </thead>
             <tbody>
