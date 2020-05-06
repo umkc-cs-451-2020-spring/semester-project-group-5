@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_040344) do
+ActiveRecord::Schema.define(version: 2020_05_03_200832) do
 
   create_table "account_transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.decimal "amount", precision: 9, scale: 2
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_04_15_040344) do
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "title"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
@@ -88,6 +89,7 @@ ActiveRecord::Schema.define(version: 2020_04_15_040344) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "account_id"
+    t.decimal "bound", precision: 9, scale: 2
     t.index ["account_id"], name: "index_triggers_on_account_id"
   end
 

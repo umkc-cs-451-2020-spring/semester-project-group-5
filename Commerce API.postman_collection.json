@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fe7ee466-9b65-4bbe-abca-4b7dff6873a6",
+		"_postman_id": "4300c0c4-0332-4fbf-9a85-6e78b1eadf1c",
 		"name": "Commerce API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -372,7 +372,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/users/2/accounts",
+							"raw": "localhost:3000/api/users/1/accounts",
 							"host": [
 								"localhost"
 							],
@@ -380,7 +380,7 @@
 							"path": [
 								"api",
 								"users",
-								"2",
+								"1",
 								"accounts"
 							]
 						}
@@ -424,7 +424,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/users/2/accounts",
+							"raw": "localhost:3000/api/users/1/accounts",
 							"host": [
 								"localhost"
 							],
@@ -432,7 +432,7 @@
 							"path": [
 								"api",
 								"users",
-								"2",
+								"1",
 								"accounts"
 							]
 						}
@@ -452,7 +452,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"account_number\": 758796377,\n\t\"amount\": \"12.00\",\n\t\"transaction_type\": \"CR\",\n\t\"description\": \"Amazon Fulfillment\",\n\t\"state\": \"mo\"\n}",
+							"raw": "{\n\t\"account_number\": 775183297,\n\t\"amount\": \"12.00\",\n\t\"transaction_type\": \"CR\",\n\t\"description\": \"Amazon Fulfillment\",\n\t\"state\": \"mo\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -546,6 +546,35 @@
 								"api",
 								"transactions",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download Transactions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"account_number\": 775183297}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/transactions/download",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"transactions",
+								"download"
 							]
 						}
 					},
@@ -733,6 +762,35 @@
 								"api",
 								"triggered-events",
 								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download Triggered Events",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"account_number\": 775183297}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/triggered-events/download",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"triggered-events",
+								"download"
 							]
 						}
 					},

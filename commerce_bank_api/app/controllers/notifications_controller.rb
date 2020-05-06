@@ -7,7 +7,7 @@ class NotificationsController < ApplicationController
     end
 
     def index
-        @notifications = Notification.where(user_id: params[:user_id])
+        @notifications = Notification.where(notification_index_params)
         render_json notifications: @notifications, count: @notifications.count
     end
 
@@ -18,6 +18,10 @@ class NotificationsController < ApplicationController
     end
 
     private
+    def notification_index_params
+        params.permit(:user_id, :read)
+    end
+
     def find_notification
         @notification = Notification.find(params[:id])
     end

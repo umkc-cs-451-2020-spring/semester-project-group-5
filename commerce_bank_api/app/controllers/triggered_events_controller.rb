@@ -1,6 +1,12 @@
 class TriggeredEventsController < ApplicationController
     before_action :find_triggered_event, only: [:show]
 
+    def csv_index
+        @account = Account.find_by(account_params)
+        @triggered_events = TriggeredEvent.where(account: @account)
+        send_data @triggered_events.to_csv, filename: "#{@account.account_number}-triggered-events-#{Date.today}.csv"
+    end
+
     def index
         @account = Account.find_by(account_params)
         @triggered_events = TriggeredEvent.where(account: @account)
