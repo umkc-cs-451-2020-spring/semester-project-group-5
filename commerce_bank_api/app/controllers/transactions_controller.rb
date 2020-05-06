@@ -1,5 +1,6 @@
 class TransactionsController < ApplicationController
-
+  before_action :authorize!
+  
   def create
     @account = Account.find_by(account_params)
     @transaction = @account.account_transactions.create!(transaction_params)
@@ -29,6 +30,11 @@ class TransactionsController < ApplicationController
     raise ActiveRecord::RecordNotFound unless @account
     @transactions = AccountTransaction.where(account: @account)
     render_json transactions: @transactions, count: @transactions.count
+  end
+
+  def resource_owner
+    account = Account.find_by(account_params)
+    account.user
   end
 
   private
