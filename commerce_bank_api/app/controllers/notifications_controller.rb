@@ -17,6 +17,13 @@ class NotificationsController < ApplicationController
         head :no_content
     end
 
+    def resource_owner
+        if params[:id]
+            Notification.find(params[:id]).user
+        elsif params[:user_id]
+            User.find(params[:user_id])
+        end
+    end
     private
     def notification_index_params
         params.permit(:user_id, :read)
