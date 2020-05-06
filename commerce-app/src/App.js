@@ -35,7 +35,7 @@ function App() {
   }
 
   const PrivateRoute = ({component: Component, ...rest}) => (
-    <Route render={(props) => {
+    <Route {...rest} render={(props) => {
       return (
       user()
         ? <Component {...props} />
@@ -54,8 +54,8 @@ function App() {
         <Route path="/signup" exact component={SignUp} />
         <PrivateRoute path="/notifications" component={Notifications}/>
         <PrivateRoute path="/profile" component={Profile} />
-        <PrivateRoute path="/account/:account_number" component={Account} />
         <PrivateRoute path="/account/:account_number/settings" component={AccountSettings} />
+        <PrivateRoute path="/account/:account_number" component={Account} />
         <PrivateRoute path="/" component={Dashboard} />
       </Switch>
     </Router>

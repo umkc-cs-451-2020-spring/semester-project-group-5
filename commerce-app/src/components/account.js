@@ -30,11 +30,13 @@ export default function Account(props) {
 
     async function getTransactions() {
         let resp = await theFrontApi.getTransactions({account_number: account_number});
+        console.log({account_number: account_number});
         setTransactions(resp.data.transactions);
     }
 
     async function getAccount() {
         let resp = await theFrontApi.getAccount(user().id, {account_number: account_number});
+        console.log({account_number: account_number});
         setAccount(resp.data);
     }
 
@@ -51,8 +53,6 @@ export default function Account(props) {
             FileDownload(resp.data, `Transactions-${account.name}.csv`);
         })
     }
-
-
 
     return (
         <div className='Account'>

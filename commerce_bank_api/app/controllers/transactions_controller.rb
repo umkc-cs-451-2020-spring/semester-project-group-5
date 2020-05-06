@@ -33,8 +33,12 @@ class TransactionsController < ApplicationController
   end
 
   def resource_owner
-    account = Account.find_by(account_params)
-    account.user
+    if (params[:account_number])
+      account = Account.find_by(account_number: params[:account_number])
+      account.user
+    elsif params[:id]
+      AccountTransaction.find(params[:id]).account.user
+    end
   end
 
   private

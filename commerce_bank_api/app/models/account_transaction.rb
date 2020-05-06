@@ -13,7 +13,7 @@ class AccountTransaction < ApplicationRecord
     inclusion: { in: %w(DR CR) }
 
   validates :amount, presence: true
-  validate :validate_withdrawal!
+  validate :validate_withdrawal!, on: :create
 
   def validate_withdrawal!
     if transaction_type == "CR" and account.balance - amount < 0.00

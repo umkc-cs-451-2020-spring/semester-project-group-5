@@ -25,7 +25,7 @@ function AccountTable(props) {
 
     async function getTransactions(){
         let resp = await theFrontApi.getTransactions({account_number: account.account_number});
-        setTransactions(resp.data.transactions);
+        setTransactions(resp.data.transactions.slice(0,5));
     }
 
     useEffect(() => {

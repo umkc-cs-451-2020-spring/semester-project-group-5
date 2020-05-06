@@ -19,8 +19,12 @@ class TriggeredEventsController < ApplicationController
     end
 
     def resource_owner
-        account = Account.find_by(account_params)
-        account.user
+        if params[:account_number]
+            account = Account.find_by(account_params)
+            account.user
+        elsif params[:id]
+            TriggeredEvent.find(params[:id]).account.user
+        end
     end
 
     private
