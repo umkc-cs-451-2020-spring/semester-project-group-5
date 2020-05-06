@@ -31,11 +31,13 @@ export default function Login(props) {
     theFrontApi.login({ email: email, password: password })
       .then((resp) => {
         if (resp.status == 201) {
+          console.log('yeet')
           setUser(resp.data.user);
           history.push('/');
         }
       })
       .catch((error) => {
+        console.log(error.response);
         if (error.response.status == 401) {
           setError(true);
           setEmail('');

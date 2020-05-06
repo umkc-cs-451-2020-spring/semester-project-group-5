@@ -27,19 +27,21 @@ function App() {
   }
 
   const ResourceNotFound = () => {
-    return (
+    return(
       <div classNmae="Error400" >
         Error 404: Not sure what you were looking for, but you won't find it here...
       </div>
     );
   }
 
-  const PrivateRoute = ({Component, ...rest }) => (
-    <Route {...rest} render={(props) => (
-      user() != null
+  const PrivateRoute = ({component: Component, ...rest}) => (
+    <Route render={(props) => {
+      return (
+      user()
         ? <Component {...props} />
         : <Redirect to='/login' />
-    )} />
+     );
+    }} />
   )
 
   return (
@@ -48,11 +50,12 @@ function App() {
       <Switch>
         <Route path='/403' exact component={UnauthorizedRequest} />
         <Route path='/404' exact component={ResourceNotFound} />
+        <Route path='/login' exact component={Login} />
+        <Route path="/signup" exact component={SignUp} />
         <PrivateRoute path="/notifications" component={Notifications}/>
         <PrivateRoute path="/profile" component={Profile} />
-        <PrivateRoute path="/account/:account_number/settings" component={AccountSettings} />
         <PrivateRoute path="/account/:account_number" component={Account} />
-        <PrivateRoute path="/signup" component={SignUp} />
+        <PrivateRoute path="/account/:account_number/settings" component={AccountSettings} />
         <PrivateRoute path="/" component={Dashboard} />
       </Switch>
     </Router>
