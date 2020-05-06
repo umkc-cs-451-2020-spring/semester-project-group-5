@@ -14,19 +14,20 @@ class AccountTransaction < ApplicationRecord
   validate :validate_withdrawal!
 
   def validate_withdrawal!
-    if @transaction.transaction_type == "CR" and @account.balance - @amount < 0.00
+    if transaction_type == "CR" and account.balance - amount < 0.00
       errors.add(:account,"Insufficient funds to perform transaction")
     end
   end
 
   def adjust_balance!
-    start_balance = @account.balance
-    if @transaction.transaction_type == "CR"
-      @account.balance -= @amount
-    elsif @transaction.transaction_type == "DR"
-      @account.balance += @amount      
+    start_balance = account.balance
+    if transaction_type == "CR"
+      account.balance = (account.balance - amount)
+    elsif transaction_type == "DR"
+      account.balance = (account.balance + amount)
     end
-    end_balance = @account.balance
+    account.save
+    end_balance = account.balance
   end
 
   private
