@@ -22,14 +22,14 @@ class AccountTransaction < ApplicationRecord
   end
 
   def adjust_balance!
-    start_balance = account.balance
+    self.start_balance = account.balance
     if transaction_type == "CR"
       account.balance = (account.balance - amount)
     elsif transaction_type == "DR"
       account.balance = (account.balance + amount)
     end
     account.save
-    end_balance = account.balance
+    self.end_balance = account.balance
   end
 
   private
