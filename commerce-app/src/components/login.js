@@ -32,7 +32,7 @@ export default function Login(props) {
       .then((resp) => {
         if (resp.status == 201) {
           setUser(resp.data.user);
-          history.push('/dashboard');
+          history.push('/');
         }
       })
       .catch((error) => {
