@@ -27,13 +27,13 @@ class TriggeredEvent < ApplicationRecord
                            Please take time to review your transactions report anything that appears to be incorrect.
                          EOS
             )
-        when 'OutOfStateTransactionTrigger'
+        when 'OutofStateTransactionTrigger'
             Notification.create(
                 user: self.account.user,
                 title: 'Out of State Transaction',
                 message: <<~EOS
-                           Transaction on account #{self.account.account_number} of $#{self.account_transaction.amount} \
-                           occurred in #{self.transaction.state}. Please reach out to customer service if this was not you.
+                           A Transaction on account #{self.account.account_number} (#{self.account.name}) for $#{self.account_transaction.amount} \
+                           occurred in #{self.account_transaction.state}. Please reach out to customer service if this was not you.
                          EOS
             )
         end
