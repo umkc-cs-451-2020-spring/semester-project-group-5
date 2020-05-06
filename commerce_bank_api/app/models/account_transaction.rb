@@ -6,11 +6,31 @@ class AccountTransaction < ApplicationRecord
   after_create :run_triggers
 
   before_validation :uppercase_transaction_type
+  before_create :adjust_balance!
+
   validates :transaction_type,
     presence: true,
     inclusion: { in: %w(DR CR) }
 
   validates :amount, presence: true
+  validate :validate_withdrawal!
+
+  def validate_withdrawal!
+    if transaction_type == "CR" and account.balance - amount < 0.00
+      errors.add(:account,"Insufficient funds to perform transaction")
+    end
+  end
+
+  def adjust_balance!
+    start_balance = account.balance
+    if transaction_type == "CR"
+      account.balance = (account.balance - amount)
+    elsif transaction_type == "DR"
+      account.balance = (account.balance + amount)
+    end
+    account.save
+    end_balance = account.balance
+  end
 
   private
   def uppercase_transaction_type
