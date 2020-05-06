@@ -26,6 +26,7 @@ export default function Account(props) {
     const [user, setUser] = userTracker();
     const [transactions, setTransactions] = useState([]);
     const [account, setAccount] = useState({});
+    const FileDownload = require('js-file-download');
 
     async function getTransactions() {
         let resp = await theFrontApi.getTransactions({account_number: account_number});
@@ -41,6 +42,17 @@ export default function Account(props) {
         getTransactions();
         getAccount();
     }, []);
+
+
+    function downloadTransactions() {
+        const payload = {account_number : account_number};
+        theFrontApi.exportTransactions(payload)
+        .then((resp) => {
+            FileDownload(resp.data, `Transactions-${account.name}.csv`);
+        })
+    }
+
+
 
     return (
         <div className='Account'>
@@ -64,7 +76,7 @@ export default function Account(props) {
                 </tbody>
             </Table>
             <div className='text-center'>
-                <Link to={`/account/${account_number}/settings`}>Settings</Link> | <Link >Download Transactions in a CSV File</Link>
+                <Link to={`/account/${account_number}/settings`}>Settings</Link> | <Button onClick={downloadTransactions} variant="link">Download Transactions in a CSV File</Button>
             </div>
         </div>
     );
