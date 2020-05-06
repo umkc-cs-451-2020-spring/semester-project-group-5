@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::API
   include Serializers
   include Utils
+  include Auth
   include CommerceBankErrors
 
   rescue_from ActiveRecord::RecordNotFound, with: :not_found

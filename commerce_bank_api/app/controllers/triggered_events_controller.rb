@@ -1,4 +1,5 @@
 class TriggeredEventsController < ApplicationController
+    before_action :authorize!
     before_action :find_triggered_event, only: [:show]
 
     def csv_index
@@ -15,6 +16,11 @@ class TriggeredEventsController < ApplicationController
 
     def show
         render json: @triggered_event, status: :ok
+    end
+
+    def resource_owner
+        account = Account.find_by(account_params)
+        account.user
     end
 
     private
