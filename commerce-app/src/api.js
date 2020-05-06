@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {useHistory} from 'react-router-dom';
+import userTracker from './utils/user-tracker';
 
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = 'http://localhost:3000/api';
@@ -9,14 +10,29 @@ api.interceptors.response.use(
   function (resp) {
     // We don't want to do anything when a response is successful
     // So we will just return the response here
+    console.log(resp);
     return resp
   },
   function (error) {
+    let history = useHistory();
+    const [user, setUser] = userTracker();
     // Here is where we intercept the HTTP errors, 401 we want to redirect to login
-    if (error.response.status == 401) {
-      console.log('oops 401');
-      let history = useHistory();
-      history.push('/');
+    switch (parseInt(error.response.status)) {
+      case 401:
+        console.log('user not logged in');
+        setUser(null);
+        history.push('/');
+        break;
+      case 403:
+        console.log('unauthorized access');
+        history.push('/403');
+        break;
+      case 404:
+        console.log('resource does not exist');
+        history.push('/404');
+        break;
+      default:
+        console.log(error.response)
     }
     return Promise.reject(error);
   }
