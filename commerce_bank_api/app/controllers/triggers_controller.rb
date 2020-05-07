@@ -42,7 +42,7 @@ class TriggersController < ApplicationController
 
   def resource_owner
     if params[:account_number]
-      account = Account.find_by(account_number: params[:account_number])
+      account = Account.find_by!(account_number: params[:account_number])
       account.user
     elsif params[:id]
       Trigger.find(params[:id]).account.user

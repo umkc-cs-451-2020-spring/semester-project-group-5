@@ -17,7 +17,10 @@ class User < ApplicationRecord
             uniqueness: true
 
   validates :password,
-            format: { with: /(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[`~!@#$%^&*()_+\-={}\[\]\\|;':",.\/<>?]).{8,}/},
+            format: { 
+              with: /(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[`~!@#$%^&*()_+\-={}\[\]\\|;':",.\/<>?]).{8,}/,
+              message: "must be at least 8 characters, one lower-case letter, one upper-case letter, one number, and one special character"
+            },
             on: :create
 
 end

@@ -24,7 +24,7 @@ class AccountsController < ApplicationController
 
     def resource_owner
         if params[:account_number]
-            Account.find_by(account_number: params[:account_number]).user
+            Account.find_by!(account_number: params[:account_number]).user
         elsif params[:user_id]
             User.find(params[:user_id])
         end

@@ -20,10 +20,10 @@ class TriggeredEventsController < ApplicationController
 
     def resource_owner
         if params[:account_number]
-            account = Account.find_by(account_params)
+            account = Account.find_by!(account_params)
             account.user
         elsif params[:id]
-            TriggeredEvent.find(params[:id]).account.user
+            TriggeredEvent.find!(params[:id]).account.user
         end
     end
 
